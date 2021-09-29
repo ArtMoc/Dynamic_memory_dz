@@ -71,8 +71,8 @@ void main()
 
 #ifdef DYNAMIC_MEMORY_2
 	unsigned int rows, cols;
-	cout << "Введите количество строк: ";cin >> rows;
-	cout << "Введите количество столбцов: ";cin >> cols;
+	cout << "Enter the number of rows: ";cin >> rows;
+	cout << "Enter the number of cols: ";cin >> cols;
 	int** arr = allocate(rows, cols);
 	FillRand(arr, rows, cols);
 	Print(arr, rows, cols);
