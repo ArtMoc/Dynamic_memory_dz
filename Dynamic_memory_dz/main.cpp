@@ -4,8 +4,8 @@ using std::cout;
 using std::endl;
 
 
-#define DYNAMIC_MEMORY_1
-//#define DYNAMIC_MEMORY_2
+//#define DYNAMIC_MEMORY_1
+#define DYNAMIC_MEMORY_2
 
 void FillRand(int arr[], const unsigned int n);
 void Print(int arr[], const unsigned int n);
@@ -17,7 +17,7 @@ void pop_back(int*& arr, int& n);
 void pop_front(int*& arr, int& n);
 void erase(int*& arr, int& n, int e_index);
 
-//////////////////////////////////
+///////////////////////ROWS///////////////////////
 
 void FillRand(int** arr, const unsigned int rows, const unsigned int cols);
 void Print(int** arr, const unsigned int rows, const unsigned int cols);
@@ -31,6 +31,15 @@ int** insert_row(int** arr, unsigned int& rows, const unsigned int cols, const u
 int** pop_row_back(int** arr, unsigned int& rows, const unsigned int cols);
 int** pop_row_front(int** arr, unsigned int& rows, const unsigned int cols);
 int** erase_row(int** arr, unsigned int& rows, const unsigned int cols, unsigned int e_index);
+
+//////////////////////COLS//////////////////////
+
+void push_col_back(int** arr, const unsigned int rows, unsigned int& cols);
+void push_col_front(int** arr, const unsigned int rows, unsigned int& cols);
+void insert_col(int** arr, const unsigned int rows, unsigned int& cols, const unsigned int i_index);
+void pop_col_back(int** arr, const unsigned int rows, unsigned int& cols);
+void pop_col_front(int** arr, const unsigned int rows, unsigned int& cols);
+void erase_col(int** arr, const unsigned int rows, unsigned int& cols, unsigned int e_index);
 
 void main()
 {
@@ -76,7 +85,7 @@ void main()
 	int** arr = allocate(rows, cols);
 	FillRand(arr, rows, cols);
 	Print(arr, rows, cols);
-	cout << "\n-------------------------------\n";
+	cout << "\n--------------- operations with rows ---------------\n" << endl;
 	arr = push_row_back(arr, rows, cols);
 	Print(arr, rows, cols);
 	cout << "\n-------------------------------\n";
@@ -108,6 +117,26 @@ void main()
 		}
 		cout << endl;
 	}
+	cout << "\n--------------- operations with cols ---------------\n" << endl;
+	push_col_back(arr, rows, cols);
+	Print(arr, rows, cols);
+	cout << "\n-------------------------------\n";
+	push_col_front(arr, rows, cols);
+	Print(arr, rows, cols);
+	cout << "\n-------------------------------\n";
+	cout << "Enter the index where to insert the col: "; cin >> i_index;
+	insert_col(arr, rows, cols, i_index);
+	Print(arr, rows, cols);
+	cout << "\n-------------------------------\n";
+	pop_col_back(arr, rows, cols);
+	Print(arr, rows, cols);
+	cout << "\n-------------------------------\n";
+	pop_col_front(arr, rows, cols);
+	Print(arr, rows, cols);
+	cout << "\n-------------------------------\n";
+	cout << "Enter the index of the col to delete: "; cin >> e_index;
+	erase_col(arr, rows, cols, e_index);
+	Print(arr, rows, cols);
 	clear(arr, rows);
 #endif // DYNAMIC_MEMORY_2
 
@@ -201,6 +230,8 @@ void erase(int*& arr, int& n, int e_index)
 	}
 	n--;
 }
+
+/////////////////////////
 
 void FillRand(int** arr, const unsigned int rows, const unsigned int cols)
 {
@@ -322,3 +353,97 @@ int** erase_row(int** arr, unsigned int& rows, const unsigned int cols, unsigned
 	rows--;
 	return arr;
 }
+
+void push_col_back(int** arr, const unsigned int rows, unsigned int& cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		int* buffer = new int[cols + 1]{};
+		for (int j = 0; j < cols; j++)
+		{
+			buffer[j] = arr[i][j];
+		}
+		delete[] arr[i];
+		arr[i] = buffer;
+	}
+	cols++;
+}
+void push_col_front(int** arr, const unsigned int rows, unsigned int& cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		int* buffer = new int[cols + 1]{};
+		for (int j = 0; j < cols; j++)
+		{
+			buffer[j+1] = arr[i][j];
+		}
+		delete[] arr[i];
+		arr[i] = buffer;
+	}
+	cols++;
+}
+void insert_col(int** arr, const unsigned int rows, unsigned int& cols, const unsigned int i_index)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		int* buffer = new int[cols + 1]{};
+		for (int j = 0; j < i_index; j++)
+		{
+			buffer[j] = arr[i][j];
+		}
+		for (int j = i_index + 1; j < cols + 1; j++)
+		{
+			buffer[j] = arr[i][j - 1];
+		}
+		delete[] arr[i];
+		arr[i] = buffer;
+	}
+	cols++;
+}
+void pop_col_back(int** arr, const unsigned int rows, unsigned int& cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		int* buffer = new int[cols - 1]{};
+		for (int j = 0; j < cols - 1; j++)
+		{
+			buffer[j] = arr[i][j];
+		}
+		delete[] arr[i];
+		arr[i] = buffer;
+	}
+	--cols;
+}
+void pop_col_front(int** arr, const unsigned int rows, unsigned int& cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		int* buffer = new int[cols - 1]{};
+		for (int j = 0; j < cols - 1; j++)
+		{
+			buffer[j] = arr[i][j+1];
+		}
+		delete[] arr[i];
+		arr[i] = buffer;
+	}
+	--cols;
+}
+void erase_col(int** arr, const unsigned int rows, unsigned int& cols, unsigned int e_index)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		int* buffer = new int[cols - 1]{};
+		for (int j = 0; j < e_index; j++)
+		{
+			buffer[j] = arr[i][j];
+		}
+		for (int j = e_index; j < cols - 1;j++)
+		{
+			buffer[j] = arr[i][j + 1];
+		}
+		delete[] arr[i];
+		arr[i] = buffer;
+	}
+	--cols;
+}
+
