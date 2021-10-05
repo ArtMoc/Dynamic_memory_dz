@@ -8,7 +8,8 @@ using std::endl;
 #define DYNAMIC_MEMORY_2
 
 void FillRand(int arr[], const unsigned int n);
-void Print(int arr[], const unsigned int n);
+template<typename T> 
+void Print(T arr[], const unsigned int n);
 
 void push_back(int*& arr, int& n, int b_value);
 void push_front(int*& arr, int& n, int f_value);
@@ -20,7 +21,8 @@ void erase(int*& arr, int& n, int e_index);
 ///////////////////////ROWS///////////////////////
 
 void FillRand(int** arr, const unsigned int rows, const unsigned int cols);
-void Print(int** arr, const unsigned int rows, const unsigned int cols);
+template<typename T>
+void Print(T** arr, const unsigned int rows, const unsigned int cols);
 
 int** allocate(const unsigned int rows, const unsigned int cols);
 void clear(int** arr, const unsigned int rows);
@@ -150,7 +152,8 @@ void FillRand(int arr[], const unsigned int n)
 		arr[i] = rand() % 100;
 	}
 }
-void Print(int arr[], const unsigned int n)
+template<typename T>
+void Print(T arr[], const unsigned int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -243,7 +246,8 @@ void FillRand(int** arr, const unsigned int rows, const unsigned int cols)
 		}
 	}
 }
-void Print(int** arr, const unsigned int rows, const unsigned int cols)
+template<typename T>
+void Print(T** arr, const unsigned int rows, const unsigned int cols)
 {
 	for (int i = 0; i < rows; i++)
 	{
