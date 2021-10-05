@@ -1,4 +1,4 @@
-#include "all_clear.h"
+#include "Allocate.h"
 int** allocate(const unsigned int rows, const unsigned int cols)
 {
 	//1)добавляем указатель на указатель, и сохраняем в него адрес массива указателей:
