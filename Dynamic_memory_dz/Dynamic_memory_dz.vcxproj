@@ -139,9 +139,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="all_clear.cpp" />
+    <ClCompile Include="FillRand.cpp" />
+    <ClCompile Include="insert_erase.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Pop.cpp" />
+    <ClCompile Include="Print.cpp" />
+    <ClCompile Include="Push.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="all_clear.h" />
+    <ClInclude Include="FillRand.h" />
+    <ClInclude Include="insert_erase.h" />
+    <ClInclude Include="Pop.h" />
+    <ClInclude Include="Print.h" />
+    <ClInclude Include="Push.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
