@@ -9,8 +9,10 @@
 #include "Pop.cpp"
 #include "insert_erase.h"
 #include "insert_erase.cpp"
-#include "all_clear.h"
-#include "all_clear.cpp"
+#include "Clear.h"
+#include "Clear.cpp"
+
+#include "Allocate.h"
 
 void main()
 {
