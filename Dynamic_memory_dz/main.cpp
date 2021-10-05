@@ -30,7 +30,8 @@ void FillRand(T** arr, const unsigned int rows, const unsigned int cols);
 template<typename T>
 void Print(T** arr, const unsigned int rows, const unsigned int cols);
 
-int** allocate(const unsigned int rows, const unsigned int cols);
+template<typename T>
+T** allocate(const unsigned int rows, const unsigned int cols);
 template<typename T>
 void clear(T** arr, const unsigned int rows);
 
@@ -102,7 +103,7 @@ void main()
 	unsigned int rows, cols;
 	cout << "Enter the number of rows: ";cin >> rows;
 	cout << "Enter the number of cols: ";cin >> cols;
-	int** arr = allocate(rows, cols);
+	int** arr = allocate<int>(rows, cols);
 	FillRand(arr, rows, cols);
 	Print(arr, rows, cols);
 	cout << "\n--------------- operations with rows ---------------\n" << endl;
@@ -283,14 +284,15 @@ void Print(T** arr, const unsigned int rows, const unsigned int cols)
 	}
 }
 
-int** allocate(const unsigned int rows, const unsigned int cols)
+template<typename T>
+T** allocate(const unsigned int rows, const unsigned int cols)
 {
 	//1)добавляем указатель на указатель, и сохраняем в него адрес массива указателей:
-	int** arr = new int* [rows];
+	T** arr = new T* [rows];
 	//2)создаем строки двумерного динамического массива:
 	for (int i = 0; i < rows; i++)
 	{
-		arr[i] = new int[cols] {};
+		arr[i] = new T[cols] {};
 	}
 	return arr;
 }
