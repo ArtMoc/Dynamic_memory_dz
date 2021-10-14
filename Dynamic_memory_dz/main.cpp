@@ -3,63 +3,40 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-
 //#define DYNAMIC_MEMORY_1
 #define DYNAMIC_MEMORY_2
-template<typename T>
-void FillRand(T arr[], const unsigned int n);
-template<typename T>
-void Print(T arr[], const unsigned int n);
 
-template<typename T>
-void push_back(T*& arr, int& n, int b_value);
-template<typename T>
-void push_front(T*& arr, int& n, int f_value);
-template<typename T>
-void insert(T*& arr, int& n, int i_value, int i_index);
-template<typename T>
-void pop_back(T*& arr, int& n);
-template<typename T>
-void pop_front(T*& arr, int& n);
-template<typename T>
-void erase(T*& arr, int& n, int e_index);
+template<typename T>void FillRand(T arr[], const unsigned int n);
+template<typename T>void Print(T arr[], const unsigned int n);
+
+template<typename T>void push_back(T*& arr, int& n, int b_value);
+template<typename T>void push_front(T*& arr, int& n, int f_value);
+template<typename T>void insert(T*& arr, int& n, int i_value, int i_index);
+template<typename T>void pop_back(T*& arr, int& n);
+template<typename T>void pop_front(T*& arr, int& n);
+template<typename T>void erase(T*& arr, int& n, int e_index);
 
 ///////////////////////ROWS///////////////////////
-template<typename T>
-void FillRand(T** arr, const unsigned int rows, const unsigned int cols);
-template<typename T>
-void Print(T** arr, const unsigned int rows, const unsigned int cols);
+template<typename T>void FillRand(T** arr, const unsigned int rows, const unsigned int cols);
+template<typename T>void Print(T** arr, const unsigned int rows, const unsigned int cols);
 
 int** allocate(const unsigned int rows, const unsigned int cols);
-template<typename T>
-void clear(T** arr, const unsigned int rows);
+template<typename T>void clear(T** arr, const unsigned int rows);
 
-template<typename T>
-T** push_row_back(T** arr, unsigned int& rows, const unsigned int cols);
-template<typename T>
-T** push_row_front(T** arr, unsigned int& rows, const unsigned int cols);
-template<typename T>
-T** insert_row(T** arr, unsigned int& rows, const unsigned int cols, const unsigned int i_index);
-template<typename T>
-T** pop_row_back(T** arr, unsigned int& rows, const unsigned int cols);
-template<typename T>
-T** pop_row_front(T** arr, unsigned int& rows, const unsigned int cols);
-template<typename T>
-T** erase_row(T** arr, unsigned int& rows, const unsigned int cols, unsigned int e_index);
+template<typename T>T** push_row_back(T** arr, unsigned int& rows, const unsigned int cols);
+template<typename T>T** push_row_front(T** arr, unsigned int& rows, const unsigned int cols);
+template<typename T>T** insert_row(T** arr, unsigned int& rows, const unsigned int cols, const unsigned int i_index);
+template<typename T>T** pop_row_back(T** arr, unsigned int& rows, const unsigned int cols);
+template<typename T>T** pop_row_front(T** arr, unsigned int& rows, const unsigned int cols);
+template<typename T>T** erase_row(T** arr, unsigned int& rows, const unsigned int cols, unsigned int e_index);
 
 //////////////////////COLS//////////////////////
-template<typename T>
-void push_col_back(T** arr, const unsigned int rows, unsigned int& cols);
-template<typename T>
-void push_col_front(T** arr, const unsigned int rows, unsigned int& cols);
-template<typename T>
-void insert_col(T** arr, const unsigned int rows, unsigned int& cols, const unsigned int i_index);
-template<typename T>
-void pop_col_back(T** arr, const unsigned int rows, unsigned int& cols);
-template<typename T>
-void pop_col_front(T** arr, const unsigned int rows, unsigned int& cols);
-template<typename T>
-void erase_col(T** arr, const unsigned int rows, unsigned int& cols, unsigned int e_index);
+template<typename T>void push_col_back(T** arr, const unsigned int rows, unsigned int& cols);
+template<typename T>void push_col_front(T** arr, const unsigned int rows, unsigned int& cols);
+template<typename T>void insert_col(T** arr, const unsigned int rows, unsigned int& cols, const unsigned int i_index);
+template<typename T>void pop_col_back(T** arr, const unsigned int rows, unsigned int& cols);
+template<typename T>void pop_col_front(T** arr, const unsigned int rows, unsigned int& cols);
+template<typename T>void erase_col(T** arr, const unsigned int rows, unsigned int& cols, unsigned int e_index);
 
 void main()
 {
