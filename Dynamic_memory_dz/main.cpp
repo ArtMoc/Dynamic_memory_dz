@@ -1,3 +1,4 @@
+//DynamicTemplatedOptimise
 #include <iostream>
 using std::cin;
 using std::cout;
@@ -15,7 +16,7 @@ void FillRand(char** arr, const unsigned int rows, const unsigned int cols);
 
 template<typename T>void Print(T arr[], const unsigned int n);
 
-template<typename T>void push_back(T*& arr, int& n, int b_value);
+template<typename T>T* push_back(T*& arr, unsigned int& n, T b_value);
 template<typename T>void push_front(T*& arr, int& n, int f_value);
 template<typename T>void insert(T*& arr, int& n, int i_value, int i_index);
 template<typename T>void pop_back(T*& arr, int& n);
@@ -214,7 +215,7 @@ template<typename T>void Print(T arr[], const unsigned int n)
 	cout << endl;
 }
 
-template<typename T>void push_back(T*& arr, int& n, int b_value)
+template<typename T>T* push_back(T*& arr, unsigned int& n, T b_value)
 {
 	T* buffer = new T[n + 1];
 	for (int i = 0; i < n; i++)
@@ -225,6 +226,7 @@ template<typename T>void push_back(T*& arr, int& n, int b_value)
 	arr = buffer;
 	arr[n] = b_value;
 	n++;
+	return arr;
 }
 template<typename T>void push_front(T*& arr, int& n, int f_value)
 {
@@ -333,6 +335,7 @@ template<typename T>void clear(T** arr, const unsigned int rows)
 
 template<typename T>T** push_row_back(T** arr, unsigned int& rows, const unsigned int cols)
 {
+#if OLD
 	T** buffer = new T * [rows + 1]{};
 	for (int i = 0; i < rows; i++)
 	{
@@ -343,6 +346,9 @@ template<typename T>T** push_row_back(T** arr, unsigned int& rows, const unsigne
 	arr[rows] = new T[cols]{};
 	rows++;
 	return arr;
+#endif // OLD
+	return push_back(arr, rows, new T[cols]{});
+
 }
 template<typename T>T** push_row_front(T** arr, unsigned int& rows, const unsigned int cols)
 {
@@ -412,6 +418,7 @@ template<typename T>void push_col_back(T** arr, const unsigned int rows, unsigne
 {
 	for (int i = 0; i < rows; i++)
 	{
+#if OLD
 		T* buffer = new T[cols + 1]{};
 		for (int j = 0; j < cols; j++)
 		{
@@ -419,6 +426,9 @@ template<typename T>void push_col_back(T** arr, const unsigned int rows, unsigne
 		}
 		delete[] arr[i];
 		arr[i] = buffer;
+#endif // OLD
+		arr[i] = push_back(arr[i], cols, T()); //T() - значение по умолчанию для типа T
+		cols--;
 	}
 	cols++;
 }
